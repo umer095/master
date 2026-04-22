@@ -1,0 +1,218 @@
+@import "tailwindcss";
+
+/* Entrance animation */
+.card {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 0.6s ease forwards;
+}
+
+/* Stagger delay */
+.card:nth-child(1) {
+  animation-delay: 0.2s;
+}
+.card:nth-child(2) {
+  animation-delay: 0.4s;
+}
+.card:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+/* Keyframes */
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hover effect */
+.card {
+  background: #1e293b;
+  padding: 24px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  background: #334155;
+  transform: translateY(-6px);
+  box-shadow: 0 0 25px rgba(59, 130, 246, 0.4);
+}
+
+/* Services Preview */
+.service-card {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.6s ease;
+}
+
+.service-card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* choose us */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.fade-item.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes rotateSlow {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-rotate {
+  animation: rotateSlow 12s linear infinite;
+}
+
+/* CTA */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+@keyframes float2 {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(20px); }
+}
+
+@keyframes slide {
+  0% { transform: translateX(-20px) rotate(45deg); }
+  100% { transform: translateX(20px) rotate(45deg); }
+}
+
+@keyframes spinSlow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float2 {
+  animation: float2 8s ease-in-out infinite;
+}
+
+.animate-slide {
+  animation: slide 6s linear infinite alternate;
+}
+
+.animate-spinSlow {
+  animation: spinSlow 12s linear infinite;
+}
+
+/* footer */
+.icon {
+  width: 40px;
+  height: 40px;
+  background: #f6AE22;
+  color: #272425;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.icon:hover {
+  transform: scale(1.1);
+  background: #EEEEEE;
+}
+
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeUp {
+  animation: fadeUp 3s ease forwards;
+}
+
+/* hollow text */
+.hollow-text {
+  font-size: 60px;
+  font-weight: bold;
+  color: transparent;
+  -webkit-text-stroke: 1px white; 
+}
+
+/* .hollow-text {
+  font-size: 60px;
+  font-weight: bold;
+  color: transparent;
+  -webkit-text-stroke: 1.5px transparent;
+  background: linear-gradient(to right, #ff7e5f, #feb47b);
+  -webkit-background-clip: text;
+} */
+
+/* about team */
+.teamCard {
+  position: absolute;
+  will-change: transform, filter;
+}
+
+
+/* OUTER DIAMOND */
+.diamond-card {
+  width: 140px;
+  height: 140px;
+  background: #ffffff;
+  transform: rotate(45deg);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+  margin: 20px;
+
+}
+
+/* HOVER EFFECT */
+.diamond-card:hover {
+  transform: rotate(45deg) scale(1.05);
+}
+
+/* INNER CONTENT (FIX ROTATION) */
+.diamond-content {
+  transform: rotate(-45deg);
+  text-align: center;
+  padding: 10px;
+}
+
+/* TITLE */
+.diamond-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #272425;
+}
+
+/* DESCRIPTION */
+.diamond-desc {
+  font-size: 11px;
+  color: #666;
+  margin-top: 6px;
+}
