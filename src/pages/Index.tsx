@@ -9,7 +9,7 @@ import WhyChooseSection from "@/components/WhyChooseSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import SubscribeSection from "@/components/SubscribeSection";
 import Footer from "@/components/Footer";
-import PromoPopup from "@/components/PromoPopup";
+
 import WhatsAppButton from "@/components/WhatsAppButton";
 
 const Index = () => {
@@ -26,7 +26,7 @@ const Index = () => {
       <TestimonialsSection />
       <SubscribeSection />
       <Footer />
-      <PromoPopup />
+    
       <WhatsAppButton />
     </div>
   );

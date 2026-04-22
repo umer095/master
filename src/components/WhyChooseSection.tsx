@@ -72,7 +72,7 @@ const WhyChooseSection = () => {
               </div>
             </div>
 
-            <a href="#" className="btn-gold inline-block mt-8">
+            <a href="/About" className="btn-gold inline-block mt-8">
               More Details
             </a>
           </div>

@@ -1,61 +1,112 @@
-import { GraduationCap, Briefcase, Settings } from "lucide-react";
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import { GraduationCap, Briefcase, Settings, ArrowRight } from "lucide-react";
 
-const cards = [
+const lookForCards = [
   {
-    icon: GraduationCap,
+    icon: <GraduationCap size={42} strokeWidth={1.5} />,
     title: "Looking for Training?",
-    description:
-      "We offer a variety of corporate level training programs tailored for both IT and Non-IT Professionals, catering to freshers as well as experienced candidates.",
-    link: "#courses",
+    description: "Master industry-demand skills with our expert-led corporate training programs designed for modern professionals.",
+    path: "/training",
+    accent: "bg-blue-600",
+    lightAccent: "bg-blue-50 text-blue-600"
   },
   {
-    icon: Briefcase,
+    icon: <Briefcase size={42} strokeWidth={1.5} />,
     title: "Looking for Internship?",
-    description:
-      "We offer live project internships specifically designed for IT and Non-IT Professionals those looking to enhance their expertise and kickstart a career in IT.",
-    link: "#courses",
+    description: "Gain hands-on experience on live industry projects and kickstart your professional journey with confidence.",
+    path: "/internship",
+    accent: "bg-emerald-600",
+    lightAccent: "bg-emerald-50 text-emerald-600"
   },
   {
-    icon: Settings,
-    title: "Looking for Services?",
-    description:
-      "As an IT professional company leveraging the latest technology, we provide comprehensive, budget-friendly solutions tailored to your needs.",
-    link: "#services",
+    icon: <Settings size={42} strokeWidth={1.5} />,
+    title: "Services looking for?",
+    description: "Scale your business with our comprehensive, budget-friendly IT solutions leveraging cutting-edge technology.",
+    path: "/services",
+    accent: "bg-orange-600",
+    lightAccent: "bg-orange-50 text-orange-600"
   },
 ];
 
-const LookingForSection = () => {
+const LookForSection = () => {
   return (
-    <section id="looking-for" className="py-20 bg-section-gray">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="section-title text-foreground">
-            What are you <span className="text-primary">Looking For?</span>
-          </h2>
-        </div>
+    <section className="py-28 bg-[#FDFDFD] overflow-hidden">
+      <div className="container mx-auto px-6">
+        
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: "circOut" }}
+          className="text-center mb-24"
+        >
+          <span className="text-blue-600 font-bold tracking-widest uppercase text-sm mb-4 block">Our Opportunities</span>
+          <h4 className="text-4xl md:text-5xl font-black text-slate-400 tracking-tight mb-6">
+            What are you <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">looking for?</span>
+          </h4>
+          <div className="w-20 h-1.5 bg-slate-200 mx-auto rounded-full overflow-hidden">
+            <motion.div 
+              initial={{ x: "-100%" }}
+              whileInView={{ x: "0%" }}
+              transition={{ duration: 1, delay: 0.5 }}
+              className="w-full h-full bg-blue-600"
+            />
+          </div>
+        </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {cards.map((card) => (
-            <div
-              key={card.title}
-              className="bg-card rounded-2xl p-8 shadow-lg card-hover border border-border group"
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-12 max-w-7xl mx-auto">
+          {lookForCards.map((card, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ 
+                type: "spring", 
+                stiffness: 100, 
+                damping: 20, 
+                delay: index * 0.15 
+              }}
+              whileHover={{ y: -12 }}
+              className="relative group bg-white rounded-[3rem] p-12 flex flex-col items-center text-center shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-slate-100 transition-all duration-500 hover:shadow-[0_40px_80px_rgba(0,0,0,0.08)] h-full"
             >
-              <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary transition-colors duration-300">
-                <card.icon className="w-8 h-8 text-primary group-hover:text-primary-foreground transition-colors duration-300" />
-              </div>
-              <h3 className="text-xl font-heading font-bold text-card-foreground mb-4">
-                {card.title}
-              </h3>
-              <p className="text-muted-foreground text-sm leading-relaxed mb-6">
-                {card.description}
-              </p>
-              <a
-                href={card.link}
-                className="text-primary font-semibold text-sm hover:underline inline-flex items-center gap-1"
+
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-slate-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-[3rem]" />
+
+              <motion.div 
+                animate={{ y: [0, -8, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                className={`mb-10 p-8 rounded-3xl ${card.lightAccent} relative z-10 transition-transform duration-500 group-hover:scale-110 shadow-sm`}
               >
-                Know more →
-              </a>
-            </div>
+                {card.icon}
+              </motion.div>
+
+              <div className="relative z-10 flex flex-col flex-grow">
+                <h3 className="text-3xl font-extrabold text-slate-800 mb-6 group-hover:text-blue-600 transition-colors">
+                  {card.title}
+                </h3>
+                <p className="text-slate-500 text-lg leading-relaxed mb-12">
+                  {card.description}
+                </p>
+              </div>
+
+              <motion.div whileTap={{ scale: 0.96 }} className="relative z-10 w-full mt-auto">
+                <Link
+                  to={card.path}
+                  className="group/btn flex items-center justify-center gap-3 w-full bg-slate-900 hover:bg-blue-600 text-white py-3 rounded-2xl font-bold text-lg transition-all duration-300 shadow-xl overflow-hidden relative"
+                >
+                  <span className="relative z-10">Know More</span>
+                  <ArrowRight size={20} className="relative z-10 group-hover/btn:translate-x-2 transition-transform duration-300" />
+
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-indigo-600 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300" />
+                </Link>
+              </motion.div>
+
+              <span className="absolute top-8 right-12 text-slate-50 font-black text-7xl select-none group-hover:text-slate-100/50 transition-colors pointer-events-none">
+                0{index + 1}
+              </span>
+            </motion.div>
           ))}
         </div>
       </div>
@@ -63,4 +114,4 @@ const LookingForSection = () => {
   );
 };
 
-export default LookingForSection;
+export default LookForSection;

@@ -7,10 +7,10 @@ const AnnouncementBar = () => {
   if (!visible) return null;
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-[60] bg-primary overflow-hidden">
+    <div className="fixed top-0 left-0 right-0 z-[60] bg-warning overflow-hidden">
       <div className="container mx-auto px-4 py-1.5 flex items-center justify-between">
         <div className="flex-1 overflow-hidden">
-          <p className="text-primary-foreground text-xs md:text-sm font-medium animate-marquee whitespace-nowrap">
+          <p className="text-warning-foreground text-xs md:text-sm font-medium animate-marquee whitespace-nowrap">
             🚀 Upgrade your skills — Learn smarter, grow faster. Now! &nbsp;&nbsp;&nbsp;
             🚀 Upgrade your skills — Learn smarter, grow faster. Now!
           </p>

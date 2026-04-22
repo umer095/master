@@ -4,50 +4,69 @@ import certPoster from "@/assets/certification-poster.jpg";
 
 const PromoPopup = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [shouldRender, setShouldRender] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsOpen(true), 3000);
-    return () => clearTimeout(timer);
+    setShouldRender(true);
+    const animTimer = setTimeout(() => setIsOpen(true), 500);
+    return () => clearTimeout(animTimer);
   }, []);
 
-  if (!isOpen) return null;
+  if (!shouldRender) return null;
+
+  const handleClose = () => {
+    setIsOpen(false);
+    setTimeout(() => setShouldRender(false), 500);
+  };
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-      <div className="absolute inset-0 bg-dark-bg/60 backdrop-blur-sm" onClick={() => setIsOpen(false)} />
-      <div className="relative bg-card rounded-2xl shadow-2xl max-w-2xl w-full overflow-hidden animate-fade-in-up">
+    <div className={`fixed inset-0 z-[999] flex items-center justify-center p-4 transition-opacity duration-700 ease-in-out ${isOpen ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
+      
+     
+      <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={handleClose} />
+      
+      <div className={`relative bg-white rounded-2xl shadow-2xl max-w-[95%] md:max-w-2xl w-full flex flex-col md:flex-row overflow-hidden transform transition-all duration-700 ease-out 
+        ${isOpen ? "scale-100 opacity-100" : "scale-95 opacity-0"}`}>
+        
         <button
-          onClick={() => setIsOpen(false)}
-          className="absolute top-4 right-4 z-10 w-8 h-8 rounded-full bg-foreground/10 flex items-center justify-center hover:bg-foreground/20 transition-colors"
+          onClick={handleClose}
+          className="absolute top-3 right-3 z-50 w-7 h-7 md:w-8 md:h-8 rounded-full bg-black/80 flex items-center justify-center hover:scale-110 transition-transform text-white shadow-lg"
+          aria-label="Close"
         >
-          <X className="w-5 h-5 text-card-foreground" />
+          <X className="w-4 h-4 md:w-5 md:h-5 stroke-[3px]" />
         </button>
 
-        <div className="flex flex-col md:flex-row">
-          <div className="md:w-1/2">
+        {/* Left/Top: Image Section - Responsive Layout */}
+        <div className="w-full md:w-[40%] p-4 md:p-5 flex items-center justify-center bg-gray-50 border-b md:border-b-0 md:border-r border-gray-100">
+          <div className="rounded-xl overflow-hidden shadow-sm w-full h-full max-h-[150px] sm:max-h-[200px] md:max-h-full">
             <img
               src={certPoster}
-              alt="Professional Certification"
-              className="w-full h-full object-cover"
+              alt="Certification"
+              className="w-full h-full object-cover object-center"
             />
           </div>
-          <div className="md:w-1/2 p-8 flex flex-col justify-center">
-            <h3 className="text-2xl font-heading font-bold text-card-foreground mb-2">
-              Cool Skills, Hot Opportunities.
-            </h3>
-            <p className="text-lg font-heading font-semibold text-primary mb-4">
-              Your Future Starts This Summer
-            </p>
-            <p className="text-muted-foreground text-sm mb-2">
-              With DezyKode — where innovation soars high!
-            </p>
-            <p className="text-primary font-semibold text-sm mb-6">
-              Limited Seats Available!
-            </p>
+        </div>
+
+        {/* Right/Bottom: Content Section */}
+        <div className="w-full md:w-[60%] p-6 md:p-10 flex flex-col justify-center text-center">
+          <h3 className="text-lg md:text-2xl lg:text-3xl font-bold text-gray-800 mb-3 leading-tight">
+            Cool skills, Hot opportunities. <br />
+            <span className="text-[#FBB03B]">Your future starts this summer</span>
+          </h3>
+          
+          <p className="text-gray-500 text-xs md:text-base mb-4 md:mb-5">
+            With Dezykode — where innovation soars high!
+          </p>
+          
+          <p className="text-red-500 font-semibold text-[10px] md:text-xs mb-5 md:mb-6 animate-pulse uppercase tracking-wider">
+            Limited Seats Available!
+          </p>
+          
+          <div className="flex justify-center">
             <a
               href="#subscribe"
-              onClick={() => setIsOpen(false)}
-              className="btn-gold text-center"
+              onClick={handleClose}
+              className="bg-[#FBB03B] hover:bg-[#e89a2e] text-white py-2.5 px-6 md:py-4 md:px-10 rounded-full text-base md:text-lg font-bold shadow-lg transform transition-all active:scale-95"
             >
               Get Offer Now!
             </a>

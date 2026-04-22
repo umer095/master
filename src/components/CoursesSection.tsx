@@ -51,7 +51,7 @@ const CoursesSection = () => {
         </div>
 
         <div className="text-center mt-10">
-          <a href="#" className="btn-gold">
+          <a href="/training" className="btn-gold">
             View More
           </a>
         </div>

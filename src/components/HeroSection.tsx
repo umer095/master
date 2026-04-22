@@ -1,51 +1,75 @@
-import heroBg from "@/assets/hero-bg.jpg";
+import heroBg from "@/assets/AI.mp4";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image with Overlay */}
-      <div className="absolute inset-0">
-        <img
-          src={heroBg}
-          alt="IT Solutions Team"
+    <section className="relative h-[85vh] md:h-screen flex items-center justify-center overflow-hidden bg-black">
+      {/* Background Video - Container height optimized */}
+      <div className="absolute inset-0 z-0">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
           className="w-full h-full object-cover"
-          width={1920}
-          height={1080}
-        />
-        <div className="absolute inset-0 bg-dark-bg/75" />
+        >
+          <source src={heroBg} type="video/mp4" />
+        </video>
+        
+        {/* Subtle Overlay */}
+        <div className="absolute inset-0 bg-black/50 z-10" />
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 text-center px-4 max-w-4xl mx-auto animate-fade-in-up">
-        <h3 className="text-dark-fg/70 text-lg md:text-xl font-body mb-4 tracking-wide">
-          Innovative Solution for the Future Generation.
-        </h3>
-        <h2 className="text-dark-fg text-2xl md:text-4xl font-heading font-semibold mb-4">
-          Be a Master, the Future of Technology.
+      {/* Compact Content Container */}
+      <div className="relative z-20 text-center px-6 max-w-4xl mx-auto">
+        
+        {/* Small Badge */}
+        <div className="inline-block px-3 py-1 mb-4 border border-primary/20 bg-primary/5 backdrop-blur-sm rounded-full">
+          <span className="text-primary text-[10px] md:text-xs font-bold uppercase tracking-widest">
+            Innovate with Us
+          </span>
+        </div>
+
+        <h2 className="text-white/80 text-lg md:text-xl font-medium mb-3 tracking-tight">
+          Master the <span className="text-white">Future Technology</span>
         </h2>
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-heading font-bold mb-8">
-          <span className="text-primary">Design</span>{" "}
-          <span className="text-dark-fg">Develop</span>{" "}
-          <span className="text-dark-fg">Succeed</span>
+
+        {/* Scaled Down Heading */}
+        <h1 className="text-4xl md:text-6xl lg:text-7xl font-black mb-6 leading-tight tracking-tighter">
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-yellow-500">
+            Design.
+          </span>{" "}
+          <span className="text-white">Develop.</span>{" "}
+          <span className="bg-clip-text text-transparent bg-gradient-to-l from-primary to-white">
+            Succeed.
+          </span>
         </h1>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-          <a href="#about" className="btn-gold text-lg px-10 py-4">
-            Explore More
-          </a>
-          <a
-            href="#subscribe"
-            className="border-2 border-primary text-primary font-semibold px-10 py-4 rounded-full hover:bg-primary hover:text-primary-foreground transition-all duration-300 text-lg"
+
+        <p className="text-gray-400 text-sm md:text-lg max-w-xl mx-auto mb-8 leading-relaxed font-light">
+          Transforming ideas into <span className="text-white">digital reality</span>. 
+          Empowering the next generation.<br></br>Be a Master, the Future of Technology
+        </p>
+        
+        {/* Compact CTA Buttons */}
+        <div className="flex flex-row gap-4 justify-center items-center">
+          <a 
+            href="#about" 
+            className="btn-gold px-6 py-3 rounded-full text-sm md:text-base font-bold transition-all shadow-lg active:scale-95"
           >
-            Contact Us
+            Explore Vision
+          </a>
+          
+          <a
+            href="/contact"
+            className="border border-white/30 text-white font-semibold px-6 py-3 rounded-full backdrop-blur-md hover:bg-white hover:text-black transition-all text-sm md:text-base"
+          >
+            Contact
           </a>
         </div>
       </div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-dark-fg/40 rounded-full flex justify-center">
-          <div className="w-1.5 h-3 bg-primary rounded-full mt-2 animate-pulse" />
-        </div>
+      {/* Mini Scroll Indicator */}
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 opacity-50">
+        <div className="w-[1px] h-10 bg-gradient-to-b from-primary to-transparent" />
       </div>
     </section>
   );
