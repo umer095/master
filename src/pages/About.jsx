@@ -6,6 +6,7 @@ import GoalSection from '../sections/about/GoalSection'
 import TeamSection from '../sections/about/TeamSection'
 import TeamDetail from '../sections/about/TeamDetail'
 
+
 const About = () => {
   return (
     <div>
