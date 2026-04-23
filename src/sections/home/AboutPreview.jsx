@@ -169,9 +169,10 @@
 //   );
 // }
 
-import missionImg from "../../assets/images/aboutPreview1.svg";
+// 1. Image path ko pura karein (Example: aboutPreview3.svg)
+import missionImg from "../../assets/images/aboutPreview3.svg"; 
 import GoalImg from "../../assets/images/aboutPreview2.svg";
-import TeamImg from "../../assets/images/aboutPreview3.svg";
+import TeamImg from "../../assets/images/aboutPreview1.svg";
 
 export default function AboutPreview() {
   const items = [
@@ -181,7 +182,7 @@ export default function AboutPreview() {
       title: "Our Mission",
       description:
         "Dezykode IT Solutions Pvt Ltd empowers businesses with innovative IT services, training, and internships. We bridge the gap between academics and industry by fostering growth, collaboration, and learning. Our aim is to develop skilled tech professionals, helping them thrive while driving digital transformation and success for businesses.",
-      img: missionImg,
+      img: missionImg, // Ab ye correctly resolve ho jayega
       alt: "mission",
       reverse: false,
     },
@@ -223,7 +224,7 @@ export default function AboutPreview() {
       </div>
 
       {/* ROWS */}
-      <div className="max-w-5xl mx-auto ">
+      <div className="max-w-5xl mx-auto flex flex-col gap-16"> {/* Gap add kiya rows ke beech */}
         {items.map((item) => (
           <div
             key={item.number}
@@ -231,21 +232,21 @@ export default function AboutPreview() {
               item.reverse ? "md:flex-row-reverse" : "md:flex-row"
             }`}
           >
-            {/* Image */}
+            {/* Image Container */}
             <div className="w-full flex justify-center lg:w-2/5">
               <img
                 src={item.img}
                 alt={item.alt}
-                className="w-48 sm:w-64 lg:w-52 object-contain"
+                className="w-48 sm:w-64 lg:w-52 object-contain hover:scale-105 transition-transform duration-300"
               />
             </div>
 
-            {/* Text */}
-            <div className="w-full lg:w-1/2 text-center lg:text-left">
-              <h3 className="text-[#f6AE22] text-lg sm:text-xl font-bold mb-3">
+            {/* Text Container */}
+            <div className="w-full lg:w-1/2 text-center lg:text-left px-2">
+              <h3 className="text-[#f6AE22] text-xl sm:text-2xl font-bold mb-3 uppercase tracking-wider">
                 {item.title}
               </h3>
-              <p className="text-[#3a3939] text-sm sm:text-base leading-relaxed">
+              <p className="text-[#3a3939] text-sm sm:text-base leading-relaxed italic border-l-4 border-[#f6AE22]/20 pl-4">
                 &ldquo;{item.description}&rdquo;
               </p>
             </div>
