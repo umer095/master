@@ -1,89 +1,110 @@
-import { Code, Smartphone, Globe } from "lucide-react";
 import trainingImg from "../../assets/images/Training.svg";
 import internshipImg from "../../assets/images/Internship.svg";
 import servicesImg from "../../assets/images/Services.svg";
+import { useNavigate } from "react-router-dom";
 
 export default function LookingFor() {
+  const data = [
+    {
+      id: "01",
+      label: "TRAINING",
+      title: "Looking for Training?",
+      desc: "Corporate programs for IT and Non-IT professionals — freshers and experienced candidates welcome.",
+      img: trainingImg,
+      route: "/courses",
+    },
+    {
+      id: "02",
+      label: "INTERNSHIP",
+      title: "Looking for Internship?",
+      desc: "Live project internships for IT and Non-IT professionals to enhance expertise and kickstart a career in tech.",
+      img: internshipImg,
+      route: "/internship",
+    },
+    {
+      id: "03",
+      label: "SERVICES",
+      title: "Services looking for?",
+      desc: "Comprehensive, budget-friendly IT solutions leveraging the latest technology tailored to your needs.",
+      img: servicesImg,
+      route: "/services",
+    },
+  ];
+
+  const navigate = useNavigate();
+
   return (
-    <section className="bg-[#EFE6D5] text-[#BB9C87] px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24">
+    <section className="bg-gray-50 py-20 px-4">
       {/* TITLE */}
       <div className="max-w-6xl mx-auto text-center">
         <h2 className="text-3xl sm:text-4xl font-bold">
           What you Looking For?
         </h2>
 
-        <div className="w-20 h-1 bg-[#a37e65] mx-auto mt-3 rounded-full"></div>
+        <div className="w-24 sm:w-28 h-1 bg-[#f6ae22] mx-auto mt-3 rounded-full"></div>
 
-        <p className="mt-6 text-[#242725] max-w-2xl mx-auto">
+        <p className="my-6 text-[#242725] max-w-2xl mx-auto">
           We offer a wide range of services to help you grow in the tech
           industry.
         </p>
       </div>
 
-      {/* CARDS */}
-      <div className="max-w-6xl mx-auto mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div className="bg-[#F5F6F0] p-6 rounded-xl transition-all duration-300 hover:-translate-y-2 hover:bg-[#dde3ef] hover:shadow-[0_0_25px_rgba(246,174,34,0.3)]">
-          <img
-            src={trainingImg}
-            alt="training"
-            className="w-25 h-25 mx-auto object-contain"
-          />
-          <h3 className="mt-3 text-lg sm:text-xl text-[#272425] font-semibold">
-            Looking for Training?
-          </h3>
-          <p className="mt-2 text-sm text-[#272425] leading-relaxed">
-            We offer a variety of corporate level training programs tailored for
-            both IT and Non-IT Professionals, catering to freshers as well as
-            experienced candidates.
-          </p>
-          <div className="mt-6 flex justify-center">
-            <button className="bg-[#F6AE22] text-black px-5 py-2.5 rounded-lg font-medium hover:bg-[#e09c1f] transition">
-              Know more
-            </button>
-          </div>
-        </div>
+      <div className="max-w-5xl mx-auto mt-12 space-y-8">
+        {data.map((item) => (
+          <div
+            key={item.id}
+            className="flex bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-sm hover:shadow-md transition"
+          >
+            {/* LEFT STRIP */}
+            <div className="relative w-24 sm:w-28 bg-[#F6AE22] flex flex-col items-center justify-center py-6">
+              {/* Number */}
+              {/* <span className="text-black font-bold text-lg mb-6">
+          {item.id}
+        </span> */}
 
-        <div className="bg-[#F5F6F0] p-6 rounded-xl transition-all duration-300 hover:-translate-y-2 hover:bg-[#dde3ef] hover:shadow-[0_0_25px_rgba(246,174,34,0.3)]">
-          <img
-            src={internshipImg}
-            alt="internship"
-            className="w-25 h-25 mx-auto object-contain"
-          />
-          <h3 className="mt-3 text-lg sm:text-xl text-[#272425] font-semibold">
-            Looking for Internship?
-          </h3>
-          <p className="mt-2 text-sm text-[#272425] leading-relaxed">
-            We offer live project internships specifically designed for IT and
-            Non-IT Professionals those looking to enhance their expertise and
-            kickstart a career in IT.
-          </p>
-          <div className="mt-6 flex justify-center">
-            <button className="bg-[#F6AE22] text-black px-5 py-2.5 rounded-lg font-medium hover:bg-[#e09c1f] transition">
-              Know more
-            </button>
-          </div>
-        </div>
+              {/* Vertical Label */}
+              <span className="rotate-[-90deg] text-[11px] font-bold tracking-[2px] text-black">
+                {item.label}
+              </span>
 
-        <div className="bg-[#F5F6F0] p-6 rounded-xl transition-all duration-300 hover:-translate-y-2 hover:bg-[#dde3ef] hover:shadow-[0_0_25px_rgba(246,174,34,0.3)]">
-          <img
-            src={servicesImg}
-            alt="services"
-            className="w-25 h-25 mx-auto object-contain"
-          />
-          <h3 className="mt-3 text-lg sm:text-xl text-[#272425] font-semibold">
-            Services looking for?
-          </h3>
-          <p className="mt-2 text-sm text-[#272425] leading-relaxed">
-            As an IT professional company leveraging the latest technology, we
-            provide comprehensive, budget-friendly solutions tailored to your
-            needs.
-          </p>
-          <div className="mt-6 flex justify-center">
-            <button className="bg-[#F6AE22] text-black px-5 py-2.5 rounded-lg font-medium hover:bg-[#e09c1f] transition">
-              Know more
-            </button>
+              {/* Dot */}
+              <div className="absolute right-[-6px] top-1/2 -translate-y-1/2 w-3 h-3 bg-black rounded-full"></div>
+            </div>
+
+            {/* CONTENT */}
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 px-6 sm:px-8 py-6 w-full">
+              {/* LEFT CONTENT */}
+              <div className="flex items-start gap-4 max-w-lg">
+                {/* Icon */}
+                <div className=" hidden sm:flex w-24 h-24 rounded-lg bg-gray-100 items-center justify-center p-2">
+                  <img
+                    src={item.img}
+                    alt={item.title}
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+
+                {/* Text */}
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-900">
+                    {item.title}
+                  </h3>
+                  <p className="text-sm text-gray-600 mt-1 leading-relaxed">
+                    {item.desc}
+                  </p>
+                </div>
+              </div>
+
+              {/* BUTTON */}
+              <button
+  onClick={() => navigate(item.route)}
+  className="w-full sm:w-auto border border-[#F6AE22] text-[#F6AE22] px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-[#F6AE22] hover:text-black transition"
+>
+  Know more →
+</button>
+            </div>
           </div>
-        </div>
+        ))}
       </div>
     </section>
   );
